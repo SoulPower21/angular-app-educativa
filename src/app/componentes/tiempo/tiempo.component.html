@@ -1,0 +1,37 @@
+<div class="container mt-4 ">
+  <br>
+  <h4>Consulta del Tiempo por Ciudad</h4>
+  <h5>{{fecha | date: 'dd/MM/yyyy'}}</h5>
+  <div class="row justify-content-evenly">
+    <div class="col-lg-6 col-sm-12 alineacion card p-2 mr-2">
+      <form [formGroup]="formulario" (ngSubmit)="consultar()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Ciudad</label>
+          <input type="text" class="form-control" id="0exampleInputEmail1" aria-describedby="emailHelp" formControlName="ciudad">
+          <p class="text-danger" *ngIf="formulario!.get('ciudad')!.invalid && formulario!.get('ciudad')!.touched">Por favor escriba solo letras</p>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Codigo ciudad</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" formControlName="codigo"/>
+          <p class="text-danger" *ngIf="formulario!.get('codigo')!.invalid && formulario!.get('codigo')!.touched">Por favor escriba solo letras</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+      </form>
+      <p class="text-danger" *ngIf="muestraError">{{mensajeError}}</p>
+    </div>
+    <div class="col-lg-6 col-sm-12 alineacion">
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <li>Descripcion: {{descripcion}}</li>
+            <li>Temperatura: {{temperatura}}</li>
+            <li>Humedad: {{humedad}}</li>
+            <li>Ciudad: {{name | uppercase}}</li>
+            <li>Latitud: {{latitud}}</li>
+            <li>Longitud: {{longitud}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
